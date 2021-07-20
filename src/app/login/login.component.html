@@ -1,0 +1,23 @@
+<h3>Login form</h3>
+<p *ngIf="successMsg" class="success-msg">{{successMsg}}</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <table>
+    <tr>
+      <td>Email:</td>
+      <td><input type="text" formControlName="email"></td>
+      <div *ngIf="loginForm.hasError('invalidemail','email') && loginForm.get('email').touched" class="error-msg">Wrong email format</div>
+    </tr>
+    <tr>
+      <td>Password:</td>
+      <td><input type="password" formControlName="password"></td>
+      <div *ngIf="loginForm.hasError('invalidpassword','password') && loginForm.get('password').touched" class="error-msg">Wrong password format</div>
+    </tr>
+    <tr>
+      <td></td>
+      <td>
+        <button>Log in</button>
+      </td>
+    </tr>
+  </table>
+</form>
+
